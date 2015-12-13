@@ -184,91 +184,82 @@
 		},
 	"county" : {
 		"name" : "Putnam",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Hendricks",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Brown",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Decatur",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Morgan",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Johnson",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Owen",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Monroe",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
-		},
-
-		"county" : {
-			"name" : "Boone",
-			"coordinator" : {
-				"name" : "First Last",
-				"email" : "john.doe@gmail.com",
-				"phone" : "XXX-XXX-XXXX"
-				},
-				"location" : [
-					{
-						"name" : "location name",
-						"address" : "Street",
-						"city" : "city",
-						"startDate" : "x/x/xxxx",
-						"endDate" : "x/x/xxxx"
-					},
-					{
-						"name" : "location name2",
-						"address" : "street",
-						"city" : "city",
-						"startDate" : "x/x/xxxx",
-						"endDate" : "x/x/xxxx"
-					}
-					]
-				},
+			}
+		]
+		}
 	}
