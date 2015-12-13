@@ -1,3 +1,28 @@
 {
 	"county": {
+		"name" : "Allen County",
+		"coordinator" : {
+			"name" : "John Doe",
+			"e-mail" : "john.doe@gmail.com",
+			"phone" : "765-867-5309"
+			},
+		"location" : [
+			{
+				"name" : "Allen County High",
+				"address" : "123 Main Street",
+				"city" : "Allentown",
+				"startDate" : "7 December 2015",
+				"endDate" : "14 December 2015"
+			},
+			{ 
+				"name" : "Pay Less",
+				"address" : "345 Elm Street",
+				"city" : "Allentown",
+				"startDate" : "13 November 2015",
+				"endDate" : "7 December 2015"
+			}
+			]
+			}
+}
+		
 
