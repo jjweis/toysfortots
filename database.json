@@ -34,83 +34,104 @@
 			},
 	"county" : {
 		"name" : "Adams",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+			{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	]
+},
 	"county" : {
 		"name" : "Dekalb",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+			{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	]
+	},
 	"county" : {
 		"name" : "Huntington",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+			{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	]
+},
 	"county" : {
 		"name" : "Noble",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+			{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	]
+	},
 	"county" : {
 		"name" : "Steuben",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+		 	{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	]
+	},
 	"county" : {
 		"name" : "Wells",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+			{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	]
+	},
 	"county" : {
 		"name" : "Marion",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
+		},
 	"county" : {
 		"name" : "Tippecanoe",
 		"coordinator" : {
@@ -118,6 +139,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Clinton",
 		"coordinator" : {
@@ -125,6 +147,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Montgomery",
 		"coordinator" : {
@@ -132,6 +155,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Boone",
 		"coordinator" : {
@@ -139,6 +163,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Hamilton",
 		"coordinator" : {
@@ -146,6 +171,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Putnam",
 		"coordinator" : {
@@ -153,6 +179,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Hendricks",
 		"coordinator" : {
@@ -160,6 +187,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Brown",
 		"coordinator" : {
@@ -167,6 +195,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Decatur",
 		"coordinator" : {
@@ -174,6 +203,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Morgan",
 		"coordinator" : {
@@ -181,6 +211,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Johnson",
 		"coordinator" : {
@@ -188,6 +219,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Owen",
 		"coordinator" : {
@@ -195,6 +227,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 	"county" : {
 		"name" : "Monroe",
 		"coordinator" : {
@@ -202,6 +235,7 @@
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			},
+		},
 
 		"county" : {
 			"name" : "Boone",
@@ -228,85 +262,3 @@
 					]
 				},
 	}
-
-
-
-
-"Allen"
-"Bartholomew"
-"Boone"
-"Brown"
-"Cass"
-"Clark"
-"Clay"
-"Clinton"
-"Crawford"
-"Daviess"
-"Dearborn"
-"Decatur"
-"DeKalb"
-"Dubois"
-"Elkhart"
-"Fayette"
-"Floyd"
-"Franklin"
-"Fulton"
-"Gibson"
-"Grant"
-"Greene"
-"Hamilton"
-"Hancock"
-"Harrison"
-"Hendricks"
-"Henry"
-"Howard"
-"Huntington"
-"Jasper"
-"Jefferson"
-"Jennings"
-"Johnson"
-"Knox"
-"Kosciusko"
-"Lake"
-"Lake"
-"LaPorte"
-"Lawrence"
-"Madison"
-"Marion"
-"Marshall"
-"Martin"
-"Miami"
-"Monroe"
-"Montgomery"
-"Morgan"
-"Newton"
-"Noble"
-"Orange"
-"Owen"
-"Perry"
-"Pike"
-"Porter"
-"Posey"
-"Putnam"
-"Randolph"
-"Ripley"
-"Rush"
-"Scott"
-"Shelby"
-"Spencer"
-"St Joseph"
-"Starke"
-"Steuben"
-"Sullivan"
-"Switzerland"
-"Tippecanoe"
-"Tipton"
-"Union"
-"Vanderburgh"
-"Vigo"
-"Wabash"
-"Warrick"
-"Washington"
-"Wayne"
-"Wells"
-"Whitley"
