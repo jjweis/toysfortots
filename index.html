@@ -9,7 +9,7 @@
 <div id="out"></div>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js">
 </script>
-<script type="text/javascript" scr="database.json"></script>
+<script type="text/javascript" src="database.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script>
 function geoFindMe() {
@@ -23,11 +23,14 @@ function geoFindMe() {
   function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
-    var county = $.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat='+latitude+'&lon='+longitude,
+   $.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat='+latitude+'&lon='+longitude,
        function (data){
-        return data.address.county;
+         var county = data.address.county;
+         county = county.replace("County", "");
+         $.each(window.COUNTIES, function(name){
+          console.log(name.name);
+         })
       });
-      console.log(county);
 
   };
 
