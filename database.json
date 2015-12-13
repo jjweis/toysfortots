@@ -134,43 +134,53 @@
 		},
 	"county" : {
 		"name" : "Tippecanoe",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Clinton",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Montgomery",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
-		},
+			}
+		]
+	},
 	"county" : {
 		"name" : "Boone",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Hamilton",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Ryan Boman",
 			"email" : "toysfortots.indianapolis@gmail.com",
 			"site" : "https://www.facebook.com/IndyToysforTots"
-			},
+			}
+		]
 		},
 	"county" : {
 		"name" : "Putnam",
