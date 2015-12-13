@@ -1,6 +1,5 @@
 {
-	"county" : {
-		"name" : "Allen",
+	"Allen" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -34,8 +33,7 @@
 				}
 				]
 			},
-	"county" : {
-		"name" : "Adams",
+	"Adams" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -49,8 +47,7 @@
 		}
 	]
 },
-	"county" : {
-		"name" : "Dekalb",
+	"Dekalb" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -64,8 +61,7 @@
 		}
 	]
 	},
-	"county" : {
-		"name" : "Huntington",
+	"Huntington" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -79,8 +75,7 @@
 		}
 	]
 },
-	"county" : {
-		"name" : "Noble",
+	"Noble" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -94,8 +89,7 @@
 		}
 	]
 	},
-	"county" : {
-		"name" : "Steuben",
+	"Steuben" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -109,8 +103,7 @@
 		}
 	]
 	},
-	"county" : {
-		"name" : "Wells",
+	"Wells" : {
 		"coordinator" : [
 			{
 			"name" : "Sunny Helstrom",
@@ -124,8 +117,7 @@
 		}
 	]
 	},
-	"county" : {
-		"name" : "Marion",
+	"Marion" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -134,8 +126,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Tippecanoe",
+	"Tippecanoe" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -144,8 +135,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Clinton",
+	"Clinton" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -154,8 +144,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Montgomery",
+	"Montgomery" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -164,8 +153,7 @@
 			}
 		]
 	},
-	"county" : {
-		"name" : "Boone",
+	"Boone" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -174,8 +162,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Hamilton",
+	"Hamilton" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -184,8 +171,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Putnam",
+	"Putnam" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -194,8 +180,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Hendricks",
+	"Hendricks" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -204,8 +189,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Brown",
+	"Brown" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -214,8 +198,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Decatur",
+	"Decatur" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -224,8 +207,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Morgan",
+	"Morgan" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -234,8 +216,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Johnson",
+	"Johnson" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -244,8 +225,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Owen",
+	"Owen" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
@@ -254,8 +234,7 @@
 			}
 		]
 		},
-	"county" : {
-		"name" : "Monroe",
+	"Monroe" : {
 		"coordinator" : [
 			{
 			"name" : "Ryan Boman",
