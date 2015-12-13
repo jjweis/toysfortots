@@ -1,16 +1,18 @@
 {
 	"county" : {
 		"name" : "Allen",
-		"coordinator" : {
+		"coordinator" : [
+			{
 			"name" : "Sunny Helstrom",
 			"email" : "fortwaynetoysfortots@gmail.com",
 			"phone" : "260-438-6603"
 			},
-		"coordinator" : {
+		{
 			"name" : "Melissa Coats",
 			"email" : "mdc_tft@yahoo.com",
 			"phone" : "260-908-2022"
-		},
+		}
+	],
 			"location" : [
 				{
 					"name" : "Kroger",
