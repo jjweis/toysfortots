@@ -1,86 +1,76 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Page Title</title>
-
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <script type="text/javascript" src="database.js"></script>
-
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="./css/themes/toysfortots.min.css" />
+	<link rel="stylesheet" href="./css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>It Worked!</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+			<p>Your theme was successfully downloaded. You can use this page as a reference for how to link it up!</p>
+			<pre>
+<strong>&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/toysfortots.min.css&quot; /&gt;</strong>
+<strong>&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/jquery.mobile.icons.min.css&quot; /&gt;</strong>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css&quot; /&gt;
+&lt;script src=&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js&quot;&gt;&lt;/script&gt;
+			</pre>
+			<script>
+			function countyFunction(){
+			  var mockObject = {firstName: 'Lauren', lastName: 'Lapkus', ages:[30,31,32]};
+			  var out="<div data-role='page' data-theme='a' id='newelement'>";
+				 out+="<div data-role='header' data-theme='a'>";
+				 out+="<h1>jQuery dialog</h1>";
+				 out+="</div>";
+				 out+="<div data-theme='a' data-form='ui-body-a' class='ui-body ui-body-a ui-corner-all'>";
+			   $.each(mockObject, function(key, value){
+			     out+=key + ":" + value+"<br />";
+			   });
+				 out+="</div>";
+				 out+="<div data-role='footer'><h4>Page Footer</h4></div>";
 
-<!-- Start of first page -->
-<div data-role="page" id="foo">
+			  $(popup).after(out);
 
-	<div data-role="header">
-		<h1>Foo</h1>
-	</div><!-- /header -->
-<script>
-function countyFunction(){
-  var mockObject = {firstName: 'Lauren', lastName: 'Lapkus', ages:[30,31,32]};
-  var out="<div data-role='page' id='newelement'>";
-	 out+="<div data-role='header' class='ui-content'>";
-	 out+="<h1>jQuery dialog</h1>";
-	 out+="</div>";
-	 out+="<div role='main' class='ui-content'>";
-   $.each(mockObject, function(key, value){
-     out+=key + ":" + value+"<br />";
-   });
-	 out+="</div>";
-	 out+="<div data-role='footer'><h4>Page Footer</h4></div>";
+			  //console.log(window.COUNTIES.Marion.coordinator[0].email);
+			}
+			</script>
+			<p>This is content color swatch "A" and a preview of a <a href="#" class="ui-link">link</a>.</p>
+			<p><a href="#newelement" onclick="countyFunction()" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+			<label for="slider1">Input slider:</label>
+			<input type="range" name="slider1" id="slider1" value="50" min="0" max="100" data-theme="a" />
+			<fieldset data-role="controlgroup"  data-type="horizontal" data-role="fieldcontain">
+			<legend>Cache settings:</legend>
+			<input type="radio" name="radio-choice-a1" id="radio-choice-a1" value="on" checked="checked" />
+			<label for="radio-choice-a1">On</label>
+			<input type="radio" name="radio-choice-a1" id="radio-choice-b1" value="off"  />
+			<label for="radio-choice-b1">Off</label>
+			</fieldset>
+		</div>
+	</div>
+	<!-- Start of third page: #popup -->
+	<div data-role="page" data-theme="a" id="popup">
 
-  $(popup).after(out);
+		<div data-role="header" data-theme="b">
+			<h1>Dialog</h1>
+		</div><!-- /header -->
 
-  //console.log(window.COUNTIES.Marion.coordinator[0].email);
-}
-</script>
-	<div role="main" class="ui-content">
-		<p>I'm first in the source order so I'm shown as the page.</p>
-		<p>View internal page called <a href="#bar">bar</a></p>
-    <p><a href="#newelement" onclick="countyFunction()" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
-	</div><!-- /content -->
+		<div role="main" data-theme="b" class="ui-content">
+			<h2>Popup</h2>
+			<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
+			<p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
+		</div><!-- /content -->
 
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-
-<!-- Start of second page -->
-<div data-role="page" id="bar">
-
-	<div data-role="header">
-		<h1>Bar</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p>
-		<p><a href="#foo">Back to foo</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-
-<!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
-
-	<div data-role="header" data-theme="b">
-		<h1>Dialog</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<h2>Popup</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
-		<p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page popup -->
-</body></html>
+		<div data-role="footer">
+			<h4>Page Footer</h4>
+		</div><!-- /footer -->
+	</div><!-- /page popup -->
+</body>
+</html>
