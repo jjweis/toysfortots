@@ -3,74 +3,103 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>jQuery Mobile: Theme Download</title>
-	<link rel="stylesheet" href="./css/themes/toysfortots.min.css" />
+	<link rel="stylesheet" href="./css/themes/toysfortots.css" />
 	<link rel="stylesheet" href="./css/themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+  .ui-autocomplete-loading {
+    background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
+  }
+  #custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+    -webkit-border-radius: .3125em;
+    border-radius: .3125em;
+}
+  </style>
 </head>
 <body>
-	<div data-role="page" data-theme="a">
+	<div data-role="page" id="main" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>It Worked!</h1>
+			<h1>Indiana Toys for Tots</h1>
 		</div>
 		<div data-role="content" data-theme="a">
-			<p>Your theme was successfully downloaded. You can use this page as a reference for how to link it up!</p>
-			<pre>
-<strong>&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/toysfortots.min.css&quot; /&gt;</strong>
-<strong>&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/jquery.mobile.icons.min.css&quot; /&gt;</strong>
-&lt;link rel=&quot;stylesheet&quot; href=&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css&quot; /&gt;
-&lt;script src=&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js&quot;&gt;&lt;/script&gt;
-			</pre>
+			<script>
+  $(function() {
+	$.getJSON("database.json", function (data) {
+			var outArray = [];
+			$.each(data, function(index){
+					outArray.push(index);
+			});//end each
+		$( "#county" ).autocomplete({
+    		source: outArray,
+			minLength: 3,
+			delay: 1000
+		});//end autocomplete
+  });//end getJSON
+});
+
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    console.log("Geolocation is not supported by your browser");
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+   $.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat='+latitude+'&lon='+longitude,
+       function (data){
+         var county = data.address.county;
+         county = county.replace("County", "");
+		 $("#county").val(county);
+      });
+
+  };
+
+  function error() {
+    console.log("Unable to retrieve your location");
+  };
+  navigator.geolocation.getCurrentPosition(success, error);
+}//end geoFindMe
+
+			</script>
+			<p><a href="#newelement" onclick="countyFunction()" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page</a></p>
+			<p>
+			<div class="ui-widget">
+			<label for="county">Enter a County</label>
+			<input id="county" class="ui-content" />	
+				<div data-role="controlgroup" data-type="horizontal">
+    			<a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-icon-location  ui-alt-icon ui-btn-icon-left" onclick="geoFindMe()">Current Location</a>
+				<a href="#newelement" data-rel="dialog" data-transition="pop" class="ui-btn ui-corner-all ui-btn-inline ui-icon-search ui-alt-icon ui-btn-icon-left" onclick="countyFunction()">Search</a>
+				</div>
+			</div>
+			</p>
+	</div>
+			<!-- Start of second page -->
 			<script>
 			function countyFunction(){
-			  var mockObject = {firstName: 'Lauren', lastName: 'Lapkus', ages:[30,31,32]};
-			  var out="<div data-role='page' data-theme='a' id='newelement'>";
+			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
+			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
 				 out+="<div data-role='header' data-theme='a'>";
 				 out+="<h1>jQuery dialog</h1>";
 				 out+="</div>";
-				 out+="<div data-theme='a' data-form='ui-body-a' class='ui-body ui-body-a ui-corner-all'>";
+				 out+="<div data-theme='a' data-role='content' data-form='ui-body-a' class='ui-body ui-body-a ui-corner-all'>";
 			   $.each(mockObject, function(key, value){
-			     out+=key + ":" + value+"<br />";
+			     //console.log(key + ":" + value+"\n");
+				 out+=key + ":" + value+"<br />";
 			   });
+
 				 out+="</div>";
 				 out+="<div data-role='footer'><h4>Page Footer</h4></div>";
-
-			  $(popup).after(out);
-
-			  //console.log(window.COUNTIES.Marion.coordinator[0].email);
+				//console.log(out);
+				
+				
+			  $(main).after(out);
 			}
 			</script>
-			<p>This is content color swatch "A" and a preview of a <a href="#" class="ui-link">link</a>.</p>
-			<p><a href="#newelement" onclick="countyFunction()" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
-			<label for="slider1">Input slider:</label>
-			<input type="range" name="slider1" id="slider1" value="50" min="0" max="100" data-theme="a" />
-			<fieldset data-role="controlgroup"  data-type="horizontal" data-role="fieldcontain">
-			<legend>Cache settings:</legend>
-			<input type="radio" name="radio-choice-a1" id="radio-choice-a1" value="on" checked="checked" />
-			<label for="radio-choice-a1">On</label>
-			<input type="radio" name="radio-choice-a1" id="radio-choice-b1" value="off"  />
-			<label for="radio-choice-b1">Off</label>
-			</fieldset>
-		</div>
-	</div>
-	<!-- Start of third page: #popup -->
-	<div data-role="page" data-theme="a" id="popup">
-
-		<div data-role="header" data-theme="b">
-			<h1>Dialog</h1>
-		</div><!-- /header -->
-
-		<div role="main" data-theme="b" class="ui-content">
-			<h2>Popup</h2>
-			<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
-			<p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
-		</div><!-- /content -->
-
-		<div data-role="footer">
-			<h4>Page Footer</h4>
-		</div><!-- /footer -->
-	</div><!-- /page popup -->
 </body>
 </html>
