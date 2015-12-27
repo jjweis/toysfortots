@@ -13,6 +13,18 @@
   .ui-autocomplete-loading {
     background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
   }
+  .ui-header .ui-title {margin: 0 20%;}
+  ul.ui-autocomplete.ui-menu{
+  font-weight: bold;
+  }
+  .ui-autocomplete {
+	width: 200px;
+	background: white;
+	border-radius: 10px;
+	min-height: 2em;
+	list-style: none;
+	display: block;
+	}
   #custom-border-radius .ui-btn-icon-notext.ui-corner-all {
     -webkit-border-radius: .3125em;
     border-radius: .3125em;
@@ -82,6 +94,10 @@ function geoFindMe() {
 			<!-- Start of second page -->
 			<script>
 			function countyFunction(){
+			$.getJSON("database.json", function( data ){
+				console.log(data[$('#county').val()]);
+			});
+			
 			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
 			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
 				 out+="<div data-role='header' data-theme='a'>";
