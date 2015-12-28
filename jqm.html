@@ -38,7 +38,7 @@
 		</div>
 		<div data-role="content" data-theme="a">
 			<script>
-  $(function() {
+  (function($) {
 	$.getJSON("database.json", function (data) {
 			var outArray = [];
 			$.each(data, function(index){
@@ -50,7 +50,7 @@
 			delay: 1000
 		});//end autocomplete
   });//end getJSON
-});
+}) (jQuery );
 
 function geoFindMe() {
   var output = document.getElementById("out");
@@ -92,12 +92,22 @@ function geoFindMe() {
 			</p>
 	</div>
 			<!-- Start of second page -->
-			<script>
-			function countyFunction(){
+	<script>
+		function countyFunction(){
 			$.getJSON("database.json", function( data ){
-				console.log(data[$('#county').val()]);
+				var county = $('#county').val();
+				var coordinator = data[county].coordinator;
+				
+				for(var i=0; i<coordinator.length;i++){
+				console.log(i);
+				console.log(coordinator[i].name);
+				if(coordinator[i].site){console.log(coordinator[i].site)};
+				console.log(coordinator[i].phone);
+				console.log(coordinator[i].email);
+				}
 			});
-			
+		
+			/*
 			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
 			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
 				 out+="<div data-role='header' data-theme='a'>";
@@ -114,8 +124,9 @@ function geoFindMe() {
 				//console.log(out);
 				
 				
-			  $(main).after(out);
-			}
-			</script>
+			  $(main).after(out);*/
+		}
+	</script>
+	
 </body>
 </html>
