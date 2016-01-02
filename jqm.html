@@ -79,7 +79,7 @@ function geoFindMe() {
 }//end geoFindMe
 
 			</script>
-			<p><a href="#newelement" onclick="countyFunction()" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page</a></p>
+			<p><a href="#two" class="ui-btn ui-shadow ui-corner-all" onclick="emptyThis()">Show page 2</a></p>
 			<p>
 			<div class="ui-widget">
 			<label for="county">Enter a County</label>
@@ -91,7 +91,26 @@ function geoFindMe() {
 			</div>
 			</p>
 	</div>
-			<!-- Start of second page -->
+</div>
+<!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+	<div data-role="header">
+		<h1>Indiana Toys for Tots</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="a" class="emptythis">
+		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
+		<p><a href="#main" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page two -->
+
 	<script>
 		function countyFunction(){
 			$.getJSON("database.json", function( data ){
@@ -106,7 +125,7 @@ function geoFindMe() {
 				console.log(coordinator[i].email);
 				}
 			});
-		
+
 			/*
 			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
 			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
@@ -125,6 +144,10 @@ function geoFindMe() {
 				
 				
 			  $(main).after(out);*/
+		}
+				function emptyThis(){
+		console.log("emptyThis called");
+		$(".emptythis").empty();
 		}
 	</script>
 	
