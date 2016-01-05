@@ -1,22 +1,62 @@
 <html>
-<title>Toys for Tots Test</title>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="./css/themes/toysfortots.css" />
+	<link rel="stylesheet" href="./css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+  .ui-autocomplete-loading {
+    background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
+  }
+  .ui-header .ui-title {margin: 0 20%;}
+  ul.ui-autocomplete.ui-menu{
+  font-weight: bold;
+  }
+  .ui-autocomplete {
+	width: 200px;
+	background: white;
+	border-radius: 10px;
+	min-height: 2em;
+	list-style: none;
+	display: block;
+	}
+  #custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+    -webkit-border-radius: .3125em;
+    border-radius: .3125em;
+}
+  </style>
 </head>
 <body>
+	<div data-role="page" id="main" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Indiana Toys for Tots</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+			<script>
+  (function($) {
+	$.getJSON("database.json", function (data) {
+			var outArray = [];
+			$.each(data, function(index){
+					outArray.push(index);
+			});//end each
+		$( "#county" ).autocomplete({
+    		source: outArray,
+			minLength: 3,
+			delay: 1000
+		});//end autocomplete
+  });//end getJSON
+}) (jQuery );
 
-
-  <p><button onclick="geoFindMe()">Show my location</button></p>
-<div id="out"></div>
-<script src="https://code.jquery.com/jquery-1.11.3.min.js">
-</script>
-<script type="text/javascript" src="database.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script>
 function geoFindMe() {
   var output = document.getElementById("out");
 
   if (!navigator.geolocation){
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    console.log("Geolocation is not supported by your browser");
     return;
   }
 
@@ -26,21 +66,96 @@ function geoFindMe() {
    $.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat='+latitude+'&lon='+longitude,
        function (data){
          var county = data.address.county;
-         county = county.replace("County", "");
-         $.each(window.COUNTIES, function(name){
-          console.log(name.name);
-         })
+         county = county.replace("County", "").trim();
+		 $("#county").val(county);
       });
 
   };
 
   function error() {
-    output.innerHTML = "Unable to retrieve your location";
+    console.log("Unable to retrieve your location");
   };
-
-  output.innerHTML = "<p>Locating…</p>";
-
   navigator.geolocation.getCurrentPosition(success, error);
-}</script>
+}//end geoFindMe
+
+			</script>
+
+			<p>
+			<div class="ui-widget">
+			<label for="county">Enter a County</label>
+			<input id="county" class="ui-content" />
+				<div data-role="controlgroup" data-type="horizontal">
+    			<a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-icon-location  ui-alt-icon ui-btn-icon-left" onclick="geoFindMe()">Current Location</a>
+				<a href="#two" class="ui-btn ui-corner-all ui-btn-inline ui-icon-search ui-alt-icon ui-btn-icon-left" onclick="countyFunction()">Search</a>
+				</div>
+			</div>
+			</p>
+	</div>
+</div>
+<!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+	<div data-role="header">
+		<h1>Indiana Toys for Tots</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="a">
+		<p class="emptythis">I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+		<p><a href="#main" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page two -->
+
+	<script>
+		function countyFunction(){
+			var coordinator ="";
+			$.getJSON("database.json", function( data ){
+				var county = $('#county').val().trim();
+				var dataKey = data[county];
+				if(typeof dataKey === 'undefined'){
+					$('.emptythis').replaceWith("<p class='emptythis'>No results found <br /></p>");
+					return
+				}
+				coordinator = data[county].coordinator;
+			var outHTML="<p class='emptythis'>";
+				for(var i=0; i<coordinator.length;i++){
+				if(coordinator[i].name){outHTML+="Coordinator "+(i+1)+":\t"+coordinator[i].name+"<br />"};
+				if(coordinator[i].site){outHTML+="Website:<a href='"+coordinator[i].site+"'>"+coordinator[i].site+"</a><br />"};
+				if(coordinator[i].phone){outHTML+="Phone\t<a href='tel:"+coordinator[i].phone+"'>"+coordinator[i].phone+"</a><br />"};
+				if(coordinator[i].email){outHTML+="E-mail:\t<a href='mailto:"+coordinator[i].email+"'>"+coordinator[i].email+"</a><br /><br />"};
+				}
+					outHTML+="</p>";
+				$('.emptythis').replaceWith(outHTML);
+			});
+
+			/*
+			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
+			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
+				 out+="<div data-role='header' data-theme='a'>";
+				 out+="<h1>jQuery dialog</h1>";
+				 out+="</div>";
+				 out+="<div data-theme='a' data-role='content' data-form='ui-body-a' class='ui-body ui-body-a ui-corner-all'>";
+			   $.each(mockObject, function(key, value){
+			     //console.log(key + ":" + value+"\n");
+				 out+=key + ":" + value+"<br />";
+			   });
+
+				 out+="</div>";
+				 out+="<div data-role='footer'><h4>Page Footer</h4></div>";
+				//console.log(out);
+
+
+			  $(main).after(out);*/
+		}
+				function emptyThis(){
+		console.log("emptyThis called");
+		$(".emptythis").empty();
+		}
+	</script>
+
 </body>
 </html>
