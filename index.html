@@ -29,6 +29,12 @@
     -webkit-border-radius: .3125em;
     border-radius: .3125em;
 }
+	@media screen and (max-width: 321px){
+		.ui-btn{
+			font-size : 12px;
+			border-radius: 2px;
+		}
+	}
   </style>
 </head>
 <body>
@@ -131,25 +137,6 @@ function geoFindMe() {
 					outHTML+="</p>";
 				$('.emptythis').replaceWith(outHTML);
 			});
-
-			/*
-			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
-			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
-				 out+="<div data-role='header' data-theme='a'>";
-				 out+="<h1>jQuery dialog</h1>";
-				 out+="</div>";
-				 out+="<div data-theme='a' data-role='content' data-form='ui-body-a' class='ui-body ui-body-a ui-corner-all'>";
-			   $.each(mockObject, function(key, value){
-			     //console.log(key + ":" + value+"\n");
-				 out+=key + ":" + value+"<br />";
-			   });
-
-				 out+="</div>";
-				 out+="<div data-role='footer'><h4>Page Footer</h4></div>";
-				//console.log(out);
-
-
-			  $(main).after(out);*/
 		}
 				function emptyThis(){
 		console.log("emptyThis called");
