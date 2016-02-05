@@ -140,7 +140,13 @@ function geoFindMe() {
 
 			var outHTML="<p class='emptythis'>";
 				for(var i=0; i<coordinator.length;i++){
-				if(coordinator[i].name){outHTML+="Coordinator "+(i+1)+":\t"+coordinator[i].name+"<br />"};
+				if(coordinator[i].name){
+					if(i==0){
+						outHTML+="Coordinator :\t"+coordinator[i].name+"<br />";
+					} else {
+						outHTML+="Coordinator "+(i+1)+":\t"+coordinator[i].name+"<br />"
+						}
+					};
 				if(coordinator[i].site){outHTML+="Website:<a href='"+coordinator[i].site+"'>"+coordinator[i].site+"</a><br />"};
 				if(coordinator[i].phone){outHTML+="Phone\t<a href='tel:"+coordinator[i].phone+"'>"+coordinator[i].phone+"</a><br />"};
 				if(coordinator[i].email){outHTML+="E-mail:\t<a href='mailto:"+coordinator[i].email+"'>"+coordinator[i].email+"</a><br /><br />"};
@@ -157,7 +163,7 @@ function geoFindMe() {
 						cal.addEvent(value.subject, value.description, value.location, value.begin, value.end);
 						makelogs(cal);
 					});
-					outHTML+="<a href=\"javascript:cal.download()\">Download Events</a>"	;
+					outHTML+="<a href=\"javascript:cal.download()\" class=\"ui-btn ui-corner-all ui-alt-icon ui-icon-calendar ui-btn-icon-left\">Download Events</a>"	;
 				}
 					outHTML+="</p>";
 				$('.emptythis').replaceWith(outHTML);
