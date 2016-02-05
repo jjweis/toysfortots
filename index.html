@@ -9,9 +9,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script src="text/javascript" src="ics.min.js"></script>
 	<script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/ics.deps.min.js"></script>
-	<script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/demo/demo.js"></script>
 <style>
   .ui-autocomplete-loading {
     background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
@@ -120,6 +118,15 @@ function geoFindMe() {
 </div><!-- /page two -->
 
 	<script>
+		var cal = ics();
+		var makelogs = function(obj) {
+			console.log('Events Array');
+			console.log('=================');
+			console.log(obj.events());
+			console.log('Calendar With Header');
+			console.log('=================');
+			console.log(obj.calendar());
+		};
 		function countyFunction(){
 			var coordinator ="";
 			$.getJSON("database.json", function( data ){
@@ -130,17 +137,27 @@ function geoFindMe() {
 					return
 				}
 				coordinator = data[county].coordinator;
+
 			var outHTML="<p class='emptythis'>";
 				for(var i=0; i<coordinator.length;i++){
 				if(coordinator[i].name){outHTML+="Coordinator "+(i+1)+":\t"+coordinator[i].name+"<br />"};
 				if(coordinator[i].site){outHTML+="Website:<a href='"+coordinator[i].site+"'>"+coordinator[i].site+"</a><br />"};
 				if(coordinator[i].phone){outHTML+="Phone\t<a href='tel:"+coordinator[i].phone+"'>"+coordinator[i].phone+"</a><br />"};
 				if(coordinator[i].email){outHTML+="E-mail:\t<a href='mailto:"+coordinator[i].email+"'>"+coordinator[i].email+"</a><br /><br />"};
-				if(coordinator[i].events){
-					$.each(coordinator[i].events, function(index){
-						console.log(index);
+				}
+				if(data[county].events!=undefined){
+
+
+					$.each(data[county].events, function(key, value){
+						//console.log(value.subject);
+						//console.log(value.description);
+						//console.log(value.location);
+						//console.log(value.begin);
+						//console.log(value.end);
+						cal.addEvent(value.subject, value.description, value.location, value.begin, value.end);
+						makelogs(cal);
 					});
-					}
+					outHTML+="<a href=\"javascript:cal.download()\">Download Events</a>"	;
 				}
 					outHTML+="</p>";
 				$('.emptythis').replaceWith(outHTML);
