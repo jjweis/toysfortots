@@ -7,7 +7,9 @@
 	<link rel="stylesheet" href="./css/themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://apis.google.com/js/client.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/ics.deps.min.js"></script>
 <style>
@@ -119,6 +121,20 @@ function geoFindMe() {
 
 	<script>
 		var cal = ics();
+		var gCal={
+			'summary' : '',
+			'location' : '',
+			'description' : '',
+			'start' : {
+				'dateTime':'',
+				'timeZone' : 'America/New_York'
+			},
+			'end' : {
+				'dateTime' : '',
+				'timeZone' : 'America/New_York'
+			}
+
+		};
 		var makelogs = function(obj) {
 			console.log('Events Array');
 			console.log('=================');
@@ -161,9 +177,17 @@ function geoFindMe() {
 						//console.log(value.begin);
 						//console.log(value.end);
 						cal.addEvent(value.subject, value.description, value.location, value.begin, value.end);
-						makelogs(cal);
+						gCal.summary=value.subject;
+						gCal.description=value.description;
+						gCal.location=value.location;
+						value.begin = new Date(value.begin);
+						value.end = new Date(value.end);
+						gCal.start.dateTime=value.begin.toISOString();
+						gCal.end.dateTime=value.end.toISOString();
+						//makelogs(cal);
 					});
 					outHTML+="<a href=\"javascript:cal.download()\" class=\"ui-btn ui-corner-all ui-alt-icon ui-icon-calendar ui-btn-icon-left\">Download Events</a>"	;
+					outHTML+="<a href=\"#\" class=\"ui-btn ui-corner-all\" onClick=\"googleCalendarAdd()\"><i class=\"fa fa-calendar-plus-o\"></i>Add to Google Calendar</a>";
 				}
 					outHTML+="</p>";
 				$('.emptythis').replaceWith(outHTML);
@@ -173,6 +197,34 @@ function geoFindMe() {
 		console.log("emptyThis called");
 		$(".emptythis").empty();
 		}
+/**
+gcal scope:https://www.googleapis.com/auth/calendar
+URIs relative to https://www.googleapis.com/calendar/v3, unless otherwise noted
+insert	POST  /calendars/calendarId/events	Creates an event.
+**/
+				function googleCalendarAdd(){
+					auth();
+					console.log(gCal);
+					gapi.client.load('calendar', 'v3').then(function(){
+						var request = gapi.client.calendar.events.insert({
+						  'calendarId': 'primary',
+						  'resource': gCal
+						});
+					request.execute(function(resp){
+						console.log(resp.htmlLink);
+						});
+					});//end function promise
+				}//end googleCalendarAdd
+				function auth() {
+	        var config = {
+	          'client_id': '537444421651-selo4r5u1skpvt9kmsbj2ocgev6nr6is.apps.googleusercontent.com',
+	          'scope': 'https://www.googleapis.com/auth/calendar'
+	        };
+	        gapi.auth.authorize(config, function() {
+	          //console.log('login complete');
+	          //console.log(gapi.auth.getToken());
+	        });
+	      }
 	</script>
 
 </body>
