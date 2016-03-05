@@ -65,7 +65,6 @@ function geoFindMe() {
   var output = document.getElementById("out");
 
   if (!navigator.geolocation){
-    console.log("Geolocation is not supported by your browser");
     return;
   }
 
@@ -82,7 +81,6 @@ function geoFindMe() {
   };
 
   function error() {
-    console.log("Unable to retrieve your location");
   };
   navigator.geolocation.getCurrentPosition(success, error);
 }//end geoFindMe
@@ -135,14 +133,7 @@ function geoFindMe() {
 			}
 
 		};
-		var makelogs = function(obj) {
-			console.log('Events Array');
-			console.log('=================');
-			console.log(obj.events());
-			console.log('Calendar With Header');
-			console.log('=================');
-			console.log(obj.calendar());
-		};
+	
 		function countyFunction(){
 			var coordinator ="";
 			$.getJSON("database.json", function( data ){
@@ -171,11 +162,6 @@ function geoFindMe() {
 
 
 					$.each(data[county].events, function(key, value){
-						//console.log(value.subject);
-						//console.log(value.description);
-						//console.log(value.location);
-						//console.log(value.begin);
-						//console.log(value.end);
 						cal.addEvent(value.subject, value.description, value.location, value.begin, value.end);
 						gCal.summary=value.subject;
 						gCal.description=value.description;
@@ -184,7 +170,6 @@ function geoFindMe() {
 						value.end = new Date(value.end);
 						gCal.start.dateTime=value.begin.toISOString();
 						gCal.end.dateTime=value.end.toISOString();
-						//makelogs(cal);
 					});
 					outHTML+="<a href=\"javascript:cal.download()\" class=\"ui-btn ui-corner-all ui-alt-icon ui-icon-calendar ui-btn-icon-left\">Download Events</a>"	;
 					outHTML+="<a href=\"#\" class=\"ui-btn ui-corner-all\" onClick=\"googleCalendarAdd()\"><i class=\"fa fa-calendar-plus-o\"></i>Add to Google Calendar</a>";
@@ -194,7 +179,6 @@ function geoFindMe() {
 			});
 		}
 				function emptyThis(){
-		console.log("emptyThis called");
 		$(".emptythis").empty();
 		}
 /**
@@ -204,14 +188,16 @@ insert	POST  /calendars/calendarId/events	Creates an event.
 **/
 				function googleCalendarAdd(){
 					auth();
-					console.log(gCal);
 					gapi.client.load('calendar', 'v3').then(function(){
 						var request = gapi.client.calendar.events.insert({
 						  'calendarId': 'primary',
 						  'resource': gCal
 						});
 					request.execute(function(resp){
-						console.log(resp.htmlLink);
+						var outHTML = "<p class='emptyThis'>";
+						outHTML+="Events successfully updated";
+						outHTML+="</p>";
+						$(".emptyThis").replaceWith(outHTML);
 						});
 					});//end function promise
 				}//end googleCalendarAdd
@@ -220,10 +206,7 @@ insert	POST  /calendars/calendarId/events	Creates an event.
 	          'client_id': '537444421651-selo4r5u1skpvt9kmsbj2ocgev6nr6is.apps.googleusercontent.com',
 	          'scope': 'https://www.googleapis.com/auth/calendar'
 	        };
-	        gapi.auth.authorize(config, function() {
-	          //console.log('login complete');
-	          //console.log(gapi.auth.getToken());
-	        });
+	        gapi.auth.authorize(config, function(){});
 	      }
 	</script>
 
