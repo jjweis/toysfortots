@@ -242,5 +242,24 @@
 			"site" : "https://www.facebook.com/IndyToysforTots"
 			}
 		]
-		}
+	},
+	"Randolph" : {
+		"coordinator" : [
+			{
+				"name" : "Ann Hunsinger",
+				"phone" : "765-966-5283",
+				"site" : "http://richmond-in.toysfortots.org/local-coordinator-sites/lco-sites/default.aspx"
+			}
+		],
+		"events":
+		[
+			{
+				"subject": "Randolph County Toys for Tots Pickup",
+				"description": "Bring a photo ID to the pickup location",
+				"location": "Marine Corps League, 200 S 9th St",
+				"begin":"19 December 2015 07:00:00",
+				"end": "19 December 2015 11:00:00"
+			}
+		]
 	}
+}

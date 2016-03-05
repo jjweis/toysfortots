@@ -7,8 +7,11 @@
 	<link rel="stylesheet" href="./css/themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://apis.google.com/js/client.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/ics.deps.min.js"></script>
 <style>
   .ui-autocomplete-loading {
     background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
@@ -29,6 +32,12 @@
     -webkit-border-radius: .3125em;
     border-radius: .3125em;
 }
+	@media screen and (max-width: 321px){
+		.ui-btn{
+			font-size : 12px;
+			border-radius: 2px;
+		}
+	}
   </style>
 </head>
 <body>
@@ -56,7 +65,6 @@ function geoFindMe() {
   var output = document.getElementById("out");
 
   if (!navigator.geolocation){
-    console.log("Geolocation is not supported by your browser");
     return;
   }
 
@@ -73,7 +81,6 @@ function geoFindMe() {
   };
 
   function error() {
-    console.log("Unable to retrieve your location");
   };
   navigator.geolocation.getCurrentPosition(success, error);
 }//end geoFindMe
@@ -111,6 +118,22 @@ function geoFindMe() {
 </div><!-- /page two -->
 
 	<script>
+		var cal = ics();
+		var gCal={
+			'summary' : '',
+			'location' : '',
+			'description' : '',
+			'start' : {
+				'dateTime':'',
+				'timeZone' : 'America/New_York'
+			},
+			'end' : {
+				'dateTime' : '',
+				'timeZone' : 'America/New_York'
+			}
+
+		};
+	
 		function countyFunction(){
 			var coordinator ="";
 			$.getJSON("database.json", function( data ){
@@ -121,40 +144,70 @@ function geoFindMe() {
 					return
 				}
 				coordinator = data[county].coordinator;
+
 			var outHTML="<p class='emptythis'>";
 				for(var i=0; i<coordinator.length;i++){
-				if(coordinator[i].name){outHTML+="Coordinator "+(i+1)+":\t"+coordinator[i].name+"<br />"};
+				if(coordinator[i].name){
+					if(i==0){
+						outHTML+="Coordinator :\t"+coordinator[i].name+"<br />";
+					} else {
+						outHTML+="Coordinator "+(i+1)+":\t"+coordinator[i].name+"<br />"
+						}
+					};
 				if(coordinator[i].site){outHTML+="Website:<a href='"+coordinator[i].site+"'>"+coordinator[i].site+"</a><br />"};
 				if(coordinator[i].phone){outHTML+="Phone\t<a href='tel:"+coordinator[i].phone+"'>"+coordinator[i].phone+"</a><br />"};
 				if(coordinator[i].email){outHTML+="E-mail:\t<a href='mailto:"+coordinator[i].email+"'>"+coordinator[i].email+"</a><br /><br />"};
 				}
+				if(data[county].events!=undefined){
+
+
+					$.each(data[county].events, function(key, value){
+						cal.addEvent(value.subject, value.description, value.location, value.begin, value.end);
+						gCal.summary=value.subject;
+						gCal.description=value.description;
+						gCal.location=value.location;
+						value.begin = new Date(value.begin);
+						value.end = new Date(value.end);
+						gCal.start.dateTime=value.begin.toISOString();
+						gCal.end.dateTime=value.end.toISOString();
+					});
+					outHTML+="<a href=\"javascript:cal.download()\" class=\"ui-btn ui-corner-all ui-alt-icon ui-icon-calendar ui-btn-icon-left\">Download Events</a>"	;
+					outHTML+="<a href=\"#\" class=\"ui-btn ui-corner-all\" onClick=\"googleCalendarAdd()\"><i class=\"fa fa-calendar-plus-o\"></i>Add to Google Calendar</a>";
+				}
 					outHTML+="</p>";
 				$('.emptythis').replaceWith(outHTML);
 			});
-
-			/*
-			  var mockObject = {firstName: 'Ryan', lastName: 'Boman', ages:[30,31,32]};
-			  	var out="<div data-role='page' data-theme='a' id='newelement'>";
-				 out+="<div data-role='header' data-theme='a'>";
-				 out+="<h1>jQuery dialog</h1>";
-				 out+="</div>";
-				 out+="<div data-theme='a' data-role='content' data-form='ui-body-a' class='ui-body ui-body-a ui-corner-all'>";
-			   $.each(mockObject, function(key, value){
-			     //console.log(key + ":" + value+"\n");
-				 out+=key + ":" + value+"<br />";
-			   });
-
-				 out+="</div>";
-				 out+="<div data-role='footer'><h4>Page Footer</h4></div>";
-				//console.log(out);
-
-
-			  $(main).after(out);*/
 		}
 				function emptyThis(){
-		console.log("emptyThis called");
 		$(".emptythis").empty();
 		}
+/**
+gcal scope:https://www.googleapis.com/auth/calendar
+URIs relative to https://www.googleapis.com/calendar/v3, unless otherwise noted
+insert	POST  /calendars/calendarId/events	Creates an event.
+**/
+				function googleCalendarAdd(){
+					auth();
+					gapi.client.load('calendar', 'v3').then(function(){
+						var request = gapi.client.calendar.events.insert({
+						  'calendarId': 'primary',
+						  'resource': gCal
+						});
+					request.execute(function(resp){
+						var outHTML = "<p class='emptyThis'>";
+						outHTML+="Events successfully updated";
+						outHTML+="</p>";
+						$(".emptyThis").replaceWith(outHTML);
+						});
+					});//end function promise
+				}//end googleCalendarAdd
+				function auth() {
+	        var config = {
+	          'client_id': '537444421651-selo4r5u1skpvt9kmsbj2ocgev6nr6is.apps.googleusercontent.com',
+	          'scope': 'https://www.googleapis.com/auth/calendar'
+	        };
+	        gapi.auth.authorize(config, function(){});
+	      }
 	</script>
 
 </body>
