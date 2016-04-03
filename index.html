@@ -11,7 +11,6 @@
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/ics.deps.min.js"></script>
 <style>
   .ui-autocomplete-loading {
     background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
@@ -118,7 +117,6 @@ function geoFindMe() {
 </div><!-- /page two -->
 
 	<script>
-		var cal = ics();
 		var gCal={
 			'summary' : '',
 			'location' : '',
@@ -133,7 +131,7 @@ function geoFindMe() {
 			}
 
 		};
-	
+
 		function countyFunction(){
 			var coordinator ="";
 			$.getJSON("database.json", function( data ){
@@ -162,7 +160,6 @@ function geoFindMe() {
 
 
 					$.each(data[county].events, function(key, value){
-						cal.addEvent(value.subject, value.description, value.location, value.begin, value.end);
 						gCal.summary=value.subject;
 						gCal.description=value.description;
 						gCal.location=value.location;
@@ -171,7 +168,6 @@ function geoFindMe() {
 						gCal.start.dateTime=value.begin.toISOString();
 						gCal.end.dateTime=value.end.toISOString();
 					});
-					outHTML+="<a href=\"javascript:cal.download()\" class=\"ui-btn ui-corner-all ui-alt-icon ui-icon-calendar ui-btn-icon-left\">Download Events</a>"	;
 					outHTML+="<a href=\"#\" class=\"ui-btn ui-corner-all\" onClick=\"googleCalendarAdd()\"><i class=\"fa fa-calendar-plus-o\"></i>Add to Google Calendar</a>";
 				}
 					outHTML+="</p>";
