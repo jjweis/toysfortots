@@ -1,0 +1,16 @@
+{
+  "name": "toysfortots",
+  "version": "1.0.0",
+  "description": "This app uses a Node.js server to run API call back functions. These functions push data from a JSON file when specific keys are requested.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Shelby and John Weis",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "jsonfile": "^2.3.1"
+  }
+}

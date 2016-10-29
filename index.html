@@ -47,6 +47,10 @@
 		</div>
 		<div data-role="content" data-theme="a">
 			<script>
+
+			var api_url = "https://toysfortots.herokuapp.com/"
+
+
   (function($) {
 	$.getJSON("database.json", function (data) {
 			var outArray = [];
@@ -133,7 +137,7 @@ function geoFindMe() {
 			}
 
 		};
-	
+
 		function countyFunction(){
 			var coordinator ="";
 			$.getJSON("database.json", function( data ){
