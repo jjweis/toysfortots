@@ -12,33 +12,33 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/ics.deps.min.js"></script>
-<style>
-  .ui-autocomplete-loading {
-    background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
-  }
-  .ui-header .ui-title {margin: 0 20%;}
-  ul.ui-autocomplete.ui-menu{
-  font-weight: bold;
-  }
-  .ui-autocomplete {
-	width: 200px;
-	background: white;
-	border-radius: 10px;
-	min-height: 2em;
-	list-style: none;
-	display: block;
-	}
-  #custom-border-radius .ui-btn-icon-notext.ui-corner-all {
-    -webkit-border-radius: .3125em;
-    border-radius: .3125em;
-}
-	@media screen and (max-width: 321px){
-		.ui-btn{
-			font-size : 12px;
-			border-radius: 2px;
+	<style>
+	  .ui-autocomplete-loading {
+	    background: white url("ui-anim_basic_16x16.gif") right center no-repeat;
+	  }
+	  .ui-header .ui-title {margin: 0 20%;}
+	  ul.ui-autocomplete.ui-menu{
+	  	font-weight: bold;
+	  }
+	  .ui-autocomplete {
+			width: 200px;
+			background: white;
+			border-radius: 10px;
+			min-height: 2em;
+			list-style: none;
+			display: block;
 		}
-	}
-  </style>
+	  #custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+	    -webkit-border-radius: .3125em;
+	    border-radius: .3125em;
+		}
+		@media screen and (max-width: 321px){
+			.ui-btn{
+				font-size : 12px;
+				border-radius: 2px;
+			}
+		}
+	</style>
 </head>
 <body>
 	<div data-role="page" id="main" data-theme="a">
@@ -47,43 +47,44 @@
 		</div>
 		<div data-role="content" data-theme="a">
 			<script>
-  (function($) {
-	$.getJSON("database.json", function (data) {
-			var outArray = [];
-			$.each(data, function(index){
-					outArray.push(index);
-			});//end each
-		$( "#county" ).autocomplete({
-    		source: outArray,
-			minLength: 3,
-			delay: 1000
-		});//end autocomplete
-  });//end getJSON
-}) (jQuery );
+			var api_url = "https://toysfortots.herokuapp.com/"
 
-function geoFindMe() {
-  var output = document.getElementById("out");
+		  (function($) {
+			$.getJSON(api_url + 'read_all', function (data) {
+					var outArray = [];
+					$.each(data, function(index){
+							outArray.push(index);
+					});//end each
+				$( "#county" ).autocomplete({
+		    		source: outArray,
+					minLength: 3,
+					delay: 1000
+				});//end autocomplete
+		  });//end getJSON
+		}) (jQuery );
 
-  if (!navigator.geolocation){
-    return;
-  }
+		function geoFindMe() {
+		  var output = document.getElementById("out");
 
-  function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
-   $.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat='+latitude+'&lon='+longitude,
-       function (data){
-         var county = data.address.county;
-         county = county.replace("County", "").trim();
-		 $("#county").val(county);
-      });
+		  if (!navigator.geolocation){
+		    return;
+		  }
 
-  };
+		  function success(position) {
+		    var latitude  = position.coords.latitude;
+		    var longitude = position.coords.longitude;
+		   $.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat='+latitude+'&lon='+longitude,
+		       function (data){
+		         var county = data.address.county;
+		         county = county.replace("County", "").trim();
+				 $("#county").val(county);
+		      });
+		  };
 
-  function error() {
-  };
-  navigator.geolocation.getCurrentPosition(success, error);
-}//end geoFindMe
+	  function error() {
+	  };
+	  navigator.geolocation.getCurrentPosition(success, error);
+	}//end geoFindMe
 
 			</script>
 
@@ -118,6 +119,7 @@ function geoFindMe() {
 </div><!-- /page two -->
 
 	<script>
+		var api_url = "https://toysfortots.herokuapp.com/"
 		var cal = ics();
 		var gCal={
 			'summary' : '',
@@ -133,10 +135,10 @@ function geoFindMe() {
 			}
 
 		};
-	
+
 		function countyFunction(){
 			var coordinator ="";
-			$.getJSON("database.json", function( data ){
+			$.getJSON(api_url + 'read_all', function( data ){
 				var county = $('#county').val().trim();
 				var dataKey = data[county];
 				if(typeof dataKey === 'undefined'){
